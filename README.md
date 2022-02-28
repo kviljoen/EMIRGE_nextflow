@@ -1,9 +1,6 @@
 # EMIRGE_nextflow
-A Nextflow implementation of EMIRGE to run samples in parallel 
-
-# 16S rRNA gene amplicon sequencing pipeline using DADA2, implemented in Nextflow
-
-A dada2-based workflow using the Nextflow workflow manager.  The basic pipeline is currently implemented, including some basic read-tracking. This pipeline is adapted from https://github.com/HPCBio/dada2-Nextflow for implementation on the UCT high-performance compute cluster
+A Nextflow implementation of EMIRGE (emirge_amplicon.py) to run samples in parallel. EMIRGE reconstructs full length ribosomal genes from short read
+sequencing data.  In the process, it also provides estimates of the sequences' abundances.
 
 ## Basic usage:
     Usage:
