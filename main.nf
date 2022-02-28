@@ -40,7 +40,7 @@ params.outdir = "$baseDir/emirge_results"
     The typical example for running the pipeline with command line flags is as follows:
     nextflow run kviljoen/EMIRGE_nextflow --reads '*_R{1,2}.fastq'emirge_amplicon.py --reference SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta 
     --bt_index SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex 
-    -i 500 -l 500 -s 500 --phred33 -profile ilifu
+    --insert_size 500 --max_len 500 -insert_sd 500 --phred 33 -profile ilifu
     
     To override existing values from the command line, please type these parameters:
     
