@@ -108,6 +108,7 @@ publishDir params.outdir, mode:'copy'
 read_pairs = Channel.fromFilePairs( params.reads, checkIfExists: true )
 
 workflow {
-    emirge(params.reference, params.btindex, read_pairs, params.insert_size, params.max_len, params.insert_sd)
+    emirge(params.reference, params.btindex, read_pairs, params.insert_size, params.max_len, params.insert_sd, params.phred)
+    rename_fasta(emirge_final)
 }
 
