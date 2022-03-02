@@ -20,6 +20,8 @@ params.reads = "$baseDir/*_{1,2}*.fastq"
 params.DB = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta"
 params.index = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex"
 params.outdir = "$baseDir/emirge_results"
+params.emrige_final = "$baseDir/emirge_results/iter.40"
+
  
  log.info """\
  EMIRGE  P I P E L I N E
@@ -84,6 +86,20 @@ publishDir params.outdir, mode:'copy'
       emirge_amplicon.py ${outdir} -1 ${pair_id.get(0)} -2 ${pair_id.get(1) -f ${params.reference} -b ${params.btindex} -i ${params.insert_size} 
       -l ${params.max_len} -s {$params.insert_sd} --phred33 &> emirge_amplicon_std_out_err
       """
+}
+
+process rename_fasta {
+publishDir params.outdir, mode:'copy'
+
+    input:
+      path(emirge_final)
+    output:
+      file('renamed.fasta')
+    script:
+      """
+      emirge_rename_fasta.py ${emirge_final} > renamed.fasta  &> emirge_rename_std_out_err
+      """
+
 }
 
 /*
