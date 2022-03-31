@@ -20,14 +20,14 @@ params.reads = "$baseDir/*_{1,2}*.fastq"
 params.DB = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta"
 params.index = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex"
 params.outdir = "$baseDir/emirge_results"
-params.emrige_final = "$baseDir/emirge_results/iter.40"
+params.emirge_final = "$baseDir/emirge_results/iter.40"
 
  
  log.info """\
  EMIRGE  P I P E L I N E
  ===================================
- transcriptome: ${params.transcriptome}
  reads        : ${params.reads}
+ DB           : ${params.DB}
  outdir       : ${params.outdir}
  """
  
@@ -38,9 +38,8 @@ params.emrige_final = "$baseDir/emirge_results/iter.40"
      ${workflow.repository}/EMIRGE_nextflow  ~  version ${params.version}
     ===================================
     Usage:
-    This pipeline can be run specifying parameters in a config file or with command line flags.
     The typical example for running the pipeline with command line flags is as follows:
-    nextflow run kviljoen/EMIRGE_nextflow --reads '*_R{1,2}.fastq'emirge_amplicon.py --reference SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta 
+    nextflow run kviljoen/EMIRGE_nextflow --reads '*_R{1,2}.fastq' emirge_amplicon.py --reference SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta 
     --bt_index SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex 
     --insert_size 500 --max_len 500 -insert_sd 500 --phred 33 -profile ilifu
     
@@ -97,7 +96,7 @@ publishDir params.outdir, mode:'copy'
       file('renamed.fasta')
     script:
       """
-      emirge_rename_fasta.py ${emirge_final} > renamed.fasta  &> emirge_rename_std_out_err
+      emirge_rename_fasta.py ${emirge_final} > emirge_renamed.fasta  &> emirge_rename_std_out_err
       """
 
 }
