@@ -18,7 +18,7 @@ nextflow.enable.dsl=2
 
 params.reads = "$baseDir/*_{1,2}*.fastq"
 params.DB = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta"
-params.index = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex"
+params.btindex = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex"
 params.outdir = "$baseDir/emirge_results"
 params.emirge_final = "$baseDir/emirge_results/iter.40"
 
@@ -84,7 +84,7 @@ publishDir params.outdir, mode:'copy'
     def (read1, read2) = reads
       """
       emirge_amplicon.py ${params.outdir} -1 ${read1} -2 ${read2} -f ${params.reference} -b ${params.btindex} -i ${params.insert_size} \ 
-      -l ${params.max_len} -s {$params.insert_sd} --phred33 &> emirge_amplicon_std_out_err
+      -s {$params.insert_sd} -l ${params.max_len} --phred33 &> emirge_amplicon_std_out_err
       """
 }
 
