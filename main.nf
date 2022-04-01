@@ -82,7 +82,7 @@ publishDir params.outdir, mode:'copy'
       tuple val(pair_id), path(outdir)
     script:
       """
-      emirge_amplicon.py ${params.outdir} -1 ${pair_id.get(0)} -2 ${pair_id.get(1)} -f ${params.reference} -b ${params.btindex} -i ${params.insert_size} 
+      emirge_amplicon.py ${params.outdir} -1 ${pair_id.getAt(0)} -2 ${pair_id.getAt(1)} -f ${params.reference} -b ${params.btindex} -i ${params.insert_size} 
       -l ${params.max_len} -s {$params.insert_sd} --phred33 &> emirge_amplicon_std_out_err
       """
 }
