@@ -36,9 +36,9 @@ sequencing data.  In the process, it also provides estimates of the sequences' a
      To run on Ilifu
      1) Start a 'screen' session from the headnode
      2) A typical command would look something like: 
-     nextflow run kviljoen/EMIRGE_nextflow --reads '*_R{1,2}.fastq'emirge_amplicon.py --reference ILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta 
+     nextflow run kviljoen/EMIRGE_nextflow --reads '*_R{1,2}.fastq' --reference ILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta 
     --bt_index SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex 
-    --insert_size 500 --max_len 500 -insert_sd 500 --phred 33 -profile ilifu
+    --insert_size 500 --max_len 500 --insert_sd 500 --phred 33 -profile ilifu
 
 
 ## Prerequisites
