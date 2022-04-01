@@ -81,8 +81,9 @@ publishDir params.outdir, mode:'copy'
     output:
       tuple val(pair_id), path(outdir)
     script:
+    def (read1, read2) = reads
       """
-      emirge_amplicon.py ${params.outdir} -1 ${pair_id.getAt(0)} -2 ${pair_id.getAt(1)} -f ${params.reference} -b ${params.btindex} -i ${params.insert_size} 
+      emirge_amplicon.py ${params.outdir} -1 ${read1} -2 ${read2} -f ${params.reference} -b ${params.btindex} -i ${params.insert_size} 
       -l ${params.max_len} -s {$params.insert_sd} --phred33 &> emirge_amplicon_std_out_err
       """
 }
