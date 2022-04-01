@@ -108,6 +108,6 @@ read_pairs = Channel.fromFilePairs( params.reads, checkIfExists: true )
 
 workflow {
     emirge(read_pairs)
-    rename_fasta(emirge_final)
+    rename_fasta(params.emirge_final)
 }
 
