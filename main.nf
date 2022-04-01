@@ -17,10 +17,10 @@ nextflow.enable.dsl=2
 */
 
 params.reads = "$baseDir/*_{1,2}*.fastq"
-params.DB = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta"
-params.btindex = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex"
+//params.DB = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.fasta"
+//params.btindex = "$baseDir/SILVA_138.1_SSURef_NR99_tax_silva_trunc.ge1200bp.le2000bp.0.97.fixed.btindex"
 params.outdir = "$baseDir/emirge_results"
-params.emirge_final = "$baseDir/emirge_results/iter.40"
+params.emirge_final = "$outdir/iter.40"
 
  
  log.info """\
